@@ -71,11 +71,6 @@ function processCurrentText() {
     quoteSpanArray = quote_text.querySelectorAll('span');
     quoteSpanArray.forEach((char, index) => {
       let typedChar = curr_input_array[index]
-   
-      if (index > 0) {
-        quoteSpanArray[index].classList.add('current_char');
-        quoteSpanArray[index-1].classList.remove('current_char');
-      }
 
       // character not currently typed
       if (typedChar == null) {
@@ -86,11 +81,16 @@ function processCurrentText() {
       } else if (typedChar === char.innerText) {
         char.classList.add('correct_char');
         char.classList.remove('incorrect_char');
+        quoteSpanArray[index+1].classList.add('curr_char');
+        quoteSpanArray[index].classList.remove('curr_char');
    
         // incorrect character
       } else {
         char.classList.add('incorrect_char');
         char.classList.remove('correct_char');
+        quoteSpanArray[index+1].classList.add('curr_char');
+        quoteSpanArray[index].classList.remove('curr_char');
+   
    
         // increment number of errors
         errors++;
