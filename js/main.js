@@ -198,3 +198,14 @@ function finishGame() {
     cpm_group.style.display = "block";
     wpm_group.style.display = "block";
 }
+
+// Automatic restart when typing tab
+input_area.addEventListener("keydown", function(event) {
+  // Number 9 is the "Tab" key on the keyboard
+  if (event.keyCode === 9) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    restart_btn.click();
+  }
+});
