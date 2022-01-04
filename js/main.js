@@ -76,22 +76,30 @@ function processCurrentText() {
       if (typedChar == null) {
         char.classList.remove('correct_char');
         char.classList.remove('incorrect_char');
+        char.classList.remove('curr_char');
    
         // correct character
       } else if (typedChar === char.innerText) {
         char.classList.add('correct_char');
         char.classList.remove('incorrect_char');
-        quoteSpanArray[index+1].classList.add('curr_char');
-        quoteSpanArray[index].classList.remove('curr_char');
+
+        // move cursor
+        quoteSpanArray[index].classList.add('curr_char');
+        if (index > 0) {
+          quoteSpanArray[index-1].classList.remove('curr_char');
+        }
    
         // incorrect character
       } else {
         char.classList.add('incorrect_char');
         char.classList.remove('correct_char');
-        quoteSpanArray[index+1].classList.add('curr_char');
-        quoteSpanArray[index].classList.remove('curr_char');
-   
-   
+
+        // move cursor
+        quoteSpanArray[index].classList.add('curr_char');
+        if (index > 0) {
+          quoteSpanArray[index-1].classList.remove('curr_char');
+        }
+
         // increment number of errors
         errors++;
       }
