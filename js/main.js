@@ -40,14 +40,20 @@ let quotes_array = [
 ];
 
 // on load events
-window.onload = updateQuote;
+function InitGame() {
+  updateQuote();
+  input_area.focus();
+}
+
+window.addEventListener("load", InitGame, true);
+
 
 
 // Pick & show random quote
 function updateQuote() {
 
     quote_text.textContent = null;
-    current_quote = quotes_array[quoteNo];
+    current_quote = quotes_array[Math.floor(Math.random()*quotes_array.length)];
    
     // separate each character and make an element
     // out of each of them to individually style them
@@ -57,14 +63,6 @@ function updateQuote() {
       quote_text.appendChild(charSpan)
     })
    
-    // roll over to the first quote
-    if (quoteNo < quotes_array.length - 1) {
-      quoteNo++;
-      console.log(`trueee`)
-    } else {
-      quoteNo = 0;
-    }
-    console.log(`quoteNo = ${quoteNo}`);
   }
 
 function processCurrentText() {
@@ -161,7 +159,7 @@ function resetValues() {
     characterTyped = 0;
     quoteNo = 0;
     input_area.disabled = false;
-   
+    game_start = false
     input_area.value = "";
     accuracy_text.textContent = 100;
     timer_text.textContent = timeLeft + 's';
@@ -191,11 +189,15 @@ function finishGame() {
     // stop the timer
     clearInterval(timer);
    
-    // disable the input area
+    // disable and clear the input area
+    input_area.value = "";
     input_area.disabled = true;
    
     // show finishing text
     quote_text.textContent = "Click on restart to start a new game.";
+
+    // stop game
+    game_start = false
    
     // calculate cpm and wpm
     cpm = Math.round(((characterTyped / timeElapsed) * 60));
@@ -208,6 +210,11 @@ function finishGame() {
     // display the cpm and wpm
     cpm_group.style.display = "block";
     wpm_group.style.display = "block";
+}
+
+function restartGame() {
+  resetValues();
+  updateQuote();
 }
 
 // Automatic restart when typing tab
