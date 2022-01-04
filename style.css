@@ -69,7 +69,10 @@ body {
     font-size: 1.5rem;
     padding: 10px;
     border: 0px;
-    box-shadow: black 5px 8px 5px;
+  }
+
+  .restart_selected {
+    box-shadow: #f7f2ea 5px 8px 5px;
   }
    
   .incorrect_char {

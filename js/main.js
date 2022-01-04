@@ -151,7 +151,6 @@ function resetValues() {
     accuracy_text.textContent = 100;
     timer_text.textContent = timeLeft + 's';
     error_text.textContent = 0;
-    restart_btn.style.display = "none";
     cpm_group.style.display = "none";
     wpm_group.style.display = "none";
 }
@@ -183,9 +182,6 @@ function finishGame() {
     // show finishing text
     quote_text.textContent = "Click on restart to start a new game.";
    
-    // display restart button
-    restart_btn.style.display = "block";
-   
     // calculate cpm and wpm
     cpm = Math.round(((characterTyped / timeElapsed) * 60));
     wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60));
@@ -200,12 +196,22 @@ function finishGame() {
 }
 
 // Automatic restart when typing tab
+
+var restart_down = false
+
 input_area.addEventListener("keydown", function(event) {
   // Number 9 is the "Tab" key on the keyboard
   if (event.keyCode === 9) {
     // Cancel the default action, if needed
     event.preventDefault();
     // Trigger the button element with a click
-    restart_btn.click();
+    restart_btn.classList.add('restart_selected')
+
+    restart_down = true
+  } else {
+    if (restart_down && event.keyCode === 13) {
+      restart_btn.click();
+    }
+    restart_btn.classList.remove('restart_selected')
   }
 });
