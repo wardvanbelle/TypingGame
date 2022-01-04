@@ -1,5 +1,5 @@
 // define main variables
-var game_start = false
+var timer_start = false
 
 // define the time limit
 let TIME_LIMIT = 60;
@@ -66,10 +66,11 @@ function updateQuote() {
   }
 
 function processCurrentText() {
-  
-    // check if game has started, if not, start game
-    if (!game_start) {
-      startGame()
+
+    // if timer not started, start timer
+    if (!timer_start) {
+      timer = setInterval(updateTimer, 1000);
+      timer_start = true
     }
 
     // get current input text and split it
@@ -145,9 +146,6 @@ function startGame() {
    
     // clear old and start a new timer
     clearInterval(timer);
-    timer = setInterval(updateTimer, 1000);
-
-    game_start = true
 }
    
 function resetValues() {
@@ -159,7 +157,7 @@ function resetValues() {
     characterTyped = 0;
     quoteNo = 0;
     input_area.disabled = false;
-    game_start = false
+    timer_start = false;
     input_area.value = "";
     accuracy_text.textContent = 100;
     timer_text.textContent = timeLeft + 's';
@@ -195,9 +193,6 @@ function finishGame() {
    
     // show finishing text
     quote_text.textContent = "Click on restart to start a new game.";
-
-    // stop game
-    game_start = false
    
     // calculate cpm and wpm
     cpm = Math.round(((characterTyped / timeElapsed) * 60));
@@ -213,8 +208,9 @@ function finishGame() {
 }
 
 function restartGame() {
+  clearInterval(timer);
   resetValues();
-  updateQuote();
+  InitGame();
 }
 
 // Automatic restart when typing tab
@@ -232,6 +228,7 @@ input_area.addEventListener("keydown", function(event) {
     restart_down = true
   } else {
     if (restart_down && event.keyCode === 13) {
+      event.preventDefault();
       restart_btn.click();
     }
     restart_btn.classList.remove('restart_selected')

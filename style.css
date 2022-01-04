@@ -52,7 +52,7 @@ body {
   }
    
   .input_area {
-    opacity: 100;
+    opacity: 0;
     background-color: #f5f5c6;
     height: 80px;
     width: 40%;
