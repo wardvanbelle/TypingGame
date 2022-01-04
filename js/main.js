@@ -1,3 +1,6 @@
+// define main variables
+var game_start = false
+
 // define the time limit
 let TIME_LIMIT = 60;
  
@@ -36,9 +39,13 @@ let quotes_array = [
     "Een pessimist ziet in elke kans de moeilijkheden. Een optimist ziet in elke moeilijkheid de kansen."
 ];
 
+// on load events
+window.onload = updateQuote;
+
 
 // Pick & show random quote
 function updateQuote() {
+
     quote_text.textContent = null;
     current_quote = quotes_array[quoteNo];
    
@@ -51,14 +58,22 @@ function updateQuote() {
     })
    
     // roll over to the first quote
-    if (quoteNo < quotes_array.length - 1)
+    if (quoteNo < quotes_array.length - 1) {
       quoteNo++;
-    else
+      console.log(`trueee`)
+    } else {
       quoteNo = 0;
+    }
+    console.log(`quoteNo = ${quoteNo}`);
   }
 
 function processCurrentText() {
- 
+  
+    // check if game has started, if not, start game
+    if (!game_start) {
+      startGame()
+    }
+
     // get current input text and split it
     curr_input = input_area.value;
     curr_input_array = curr_input.split('');
@@ -127,13 +142,14 @@ function processCurrentText() {
 }
 
 function startGame() {
- 
+
     resetValues();
-    updateQuote();
    
     // clear old and start a new timer
     clearInterval(timer);
     timer = setInterval(updateTimer, 1000);
+
+    game_start = true
 }
    
 function resetValues() {
@@ -147,7 +163,6 @@ function resetValues() {
     input_area.disabled = false;
    
     input_area.value = "";
-    quote_text.textContent = 'Click on the area below to start the game.';
     accuracy_text.textContent = 100;
     timer_text.textContent = timeLeft + 's';
     error_text.textContent = 0;
