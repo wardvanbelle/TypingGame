@@ -22,6 +22,7 @@ let error_group = document.querySelector(".errors");
 let accuracy_group = document.querySelector(".accuracy");
 let mode_group = document.querySelector(".mode_group");
 let mode_subgroups = document.querySelector(".mode_subgroups");
+let language_select = document.querySelector(".language_selection");
  
 let timeLeft = TIME_LIMIT;
 let wordsLeft = WORDS_LIMIT;
@@ -67,6 +68,11 @@ function InitGame() {
 }
 
 window.addEventListener("load", InitGame, true);
+
+language_select.addEventListener('change', function () {
+  language = language_select.options[language_select.selectedIndex].value;
+  restartGame();
+});
 
 async function TXTtoArray(url) {
   try {

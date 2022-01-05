@@ -15,6 +15,18 @@ body {
   .heading {
     margin-bottom: 20px;
     font-size: 3rem;
+    width: 100%;
+    text-align: right;
+  }
+
+  .Title {
+    float: left;
+    width: 69%;
+  }
+
+  .selection_menu {
+    margin-left: 69%;
+    width: 30%;
   }
    
   .header {
