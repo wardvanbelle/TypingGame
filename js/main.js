@@ -32,21 +32,8 @@ let total_errors = 0;
 let errors = 0;
 let accuracy = 0;
 let characterTyped = 0;
-let current_quote = "";
 let quoteNo = 0;
 let timer = null;
-
-let quotes_array = [
-    "Wees niet bang om te falen. Je hoeft het maar een keer bij het juiste eind te hebben.",
-    "Ik kies nooit voor veilig en probeer altijd tegen de stroom in te gaan. Als ik iets bereikt heb, leg ik de lat nog iets hoger. Zo ben ik gekomen waar ik nu ben.",
-    "Wie onvervangbaar wil zijn, moet zich blijvend onderscheiden.",
-    "De enige wijsheid die echt telt is weten dat je niets weet.",
-    "Als piraat bereik je meer dan wanneer je bij de marine gaat.",
-    "Het woord crisis wordt in het Chinees met twee karakters geschreven. Het ene staat voor gevaar, het andere voor mogelijkheden.",
-    "Krankzinnigheid is keer op keer hetzelfde doen en een ander resultaat verwachten. Als je uit bent op andere resultaten, doe dan niet weer hetzelfde.",
-    "Een pessimist ziet in elke kans de moeilijkheden. Een optimist ziet in elke moeilijkheid de kansen."
-];
-let words_array = [];
 
 // on load events
 function InitGame() {
@@ -123,10 +110,11 @@ function updateWords(num_words) {
 
 // Pick & show random quote
 function updateQuote() {
-
-    screen_text.textContent = null;
-    current_quote = quotes_array[Math.floor(Math.random()*quotes_array.length)];
    
+    TXTtoArray('https://wardvanbelle.github.io/TypingGame/Data/Quotes/' + language + '.txt').then(data => {
+    current_quote = data[Math.floor(Math.random()*data.length)];
+    screen_text.textContent = null;
+
     // separate each character and make an element
     // out of each of them to individually style them
     current_quote.split('').forEach(char => {
@@ -134,8 +122,8 @@ function updateQuote() {
       charSpan.innerText = char
       screen_text.appendChild(charSpan)
     })
-   
-  }
+  });
+}
 
 function processCurrentText() {
 
