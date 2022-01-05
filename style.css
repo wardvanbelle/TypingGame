@@ -1,6 +1,6 @@
 body {
-    background-color: #058b8c;
-    color: #255458;
+    background-color: #025E5E;
+    color: #FFC524;
     text-align: center;
     font-family: Monaco, monospace;
     font: Comfortaa, "Roboto Mono";
@@ -27,6 +27,10 @@ body {
   .selection_menu {
     margin-left: 69%;
     width: 30%;
+  }
+
+  .selection_menu > option {
+    background-color: #025E5E;
   }
    
   .header {
@@ -93,7 +97,7 @@ body {
   }
    
   .correct_char {
-    color: #f7f2ea;
+    color: #FEDFCA;
   }
 
   .curr_char {
@@ -110,7 +114,7 @@ body {
 
   .mode_group > div:hover {
     cursor: pointer;
-    color: #f7f2ea;
+    color: #FEDFCA;
   }
 
   .mode_selected {
@@ -127,7 +131,7 @@ body {
 
   .subgroup > div:hover {
     cursor: pointer;
-    color: #f7f2ea;
+    color: #FEDFCA;
   }
 
   .hidden {
