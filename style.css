@@ -45,7 +45,7 @@ body {
     color: #b63530;
   }
    
-  .quote {
+  .text_screen {
     font-size: 1.5rem;
     margin: 10px;
     padding: 25px;
@@ -116,4 +116,8 @@ body {
   .subgroup > div:hover {
     cursor: pointer;
     color: #f7f2ea;
+  }
+
+  .hidden {
+    display: none;
   }
