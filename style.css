@@ -87,3 +87,33 @@ body {
   .curr_char {
     border-right: .15em solid #b63530;
   }
+
+  .mode_group {
+    padding: 5px;
+  }
+
+  .mode_group > div {
+    display: inline-block;
+  }
+
+  .mode_group > div:hover {
+    cursor: pointer;
+    color: #f7f2ea;
+  }
+
+  .mode_selected {
+    color: #b63530;
+  }
+
+  .subgroup {
+    padding: 2px;
+  }
+
+  .subgroup > div {
+    display: inline-block;
+  }
+
+  .subgroup > div:hover {
+    cursor: pointer;
+    color: #f7f2ea;
+  }

@@ -17,6 +17,8 @@ let cpm_group = document.querySelector(".cpm");
 let wpm_group = document.querySelector(".wpm");
 let error_group = document.querySelector(".errors");
 let accuracy_group = document.querySelector(".accuracy");
+let mode_group = document.querySelector(".mode_group");
+let mode_subgroups = document.querySelector(".mode_subgroups");
  
 let timeLeft = TIME_LIMIT;
 let timeElapsed = 0;
@@ -223,7 +225,7 @@ input_area.addEventListener("keydown", function(event) {
     // Cancel the default action, if needed
     event.preventDefault();
     // Trigger the button element with a click
-    restart_btn.classList.add('restart_selected')
+    restart_btn.classList.add('restart_selected');
 
     restart_down = true
   } else {
@@ -231,6 +233,38 @@ input_area.addEventListener("keydown", function(event) {
       event.preventDefault();
       restart_btn.click();
     }
-    restart_btn.classList.remove('restart_selected')
+    restart_btn.classList.remove('restart_selected');
   }
 });
+
+// Mode selection
+
+mode_group.addEventListener('click', event => {
+  if (event.target.className === 'mode') {
+
+    // change visual look
+    document.querySelectorAll('.mode').forEach(n => n.classList.remove('mode_selected'));
+    event.target.classList.add('mode_selected'); 
+    
+    // change mode and according variables
+
+    // change value of subbuttons based on mode
+
+  }
+});
+
+mode_subgroups.addEventListener('click', event => {
+  if (event.target.className === 'submode') {
+
+    // change visual look
+    document.querySelectorAll('.submode').forEach(n => n.classList.remove('mode_selected'));
+    event.target.classList.add('mode_selected'); 
+    
+    // change according variables
+    TIME_LIMIT = parseInt(event.target.textContent);
+
+    // restart game to apply all changes
+    restartGame();
+  }
+});
+
