@@ -2,9 +2,18 @@
 /* MAIN CSS ELEMENTS */
 /*-------------------*/
 
+:root {
+  --bg-color: #025E5E;
+  --text-color: #FFC524;
+  --text-highlight: #AFCAE9;
+  --text-wrong: #b63530;
+  --text-correct: #FEDFCA;
+  --cursor-col: #b63530;
+}
+
 body {
-    background-color: #025E5E;
-    color: #FFC524;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     text-align: center;
     font-family: Monaco, monospace;
     font: Comfortaa, "Roboto Mono";
@@ -16,20 +25,36 @@ body {
   align-items: center;
 }
 
+.heading {
+  margin-bottom: 20px;
+  text-align: center;
+  display: inline-flex;
+  width: 100%;
+}
+
+/*-------------------*/
+/*     KEY TIPS      */
+/*-------------------*/
+
+.keyTips {
+  opacity: 0.7;
+  font-size: 1rem;
+  color: var(--text-highlight);
+}
+
+.key {
+  background-color: var(--text-highlight);
+  color: var(--bg-color);
+  padding: 1px;
+}
+
 /*-------------------*/
 /*       TITLE       */
 /*-------------------*/
 
-.heading {
-  margin-bottom: 20px;
-  font-size: 3rem;
-  width: 100%;
-  text-align: right;
-}
-
 .Title {
-  float: left;
-  width: 69%;
+  flex-grow: 2;
+  font-size: 3rem;
 }
 
 /*--------------------*/
@@ -37,9 +62,9 @@ body {
 /*--------------------*/
 
 .selection_menu {
-  margin-left: 90%;
   position: relative;
-  width: 10%;
+  margin-left: 180px;
+  padding: 5px 16px 5px 20px;
 }
 
 .selection_menu select {
@@ -59,22 +84,23 @@ body {
   width: 0;
   height: 0;
   border: 6px solid transparent;
-  border-color: #AFCAE9 transparent transparent transparent;
+  border-color: var(--text-highlight) transparent transparent transparent;
 }
 
 /* Point the arrow upwards when the select box is open (active): */
 .select-selected.select-arrow-active:after {
-  border-color: transparent transparent #AFCAE9 transparent;
-  top: 7px;
+  border-color: transparent transparent var(--text-highlight) transparent;
+  top: 5px;
 }
 
 /* style the items (options), including the selected item: */
 .select-items div,.select-selected {
-  color: #AFCAE9;
+  color: var(--text-highlight);
   font-size: 1.5rem;
-  padding: 8px 16px;
+  padding: 5px 16px 5px 20px;
+  
   border: 1px solid transparent;
-  border-color: transparent transparent #FFC524 transparent;
+  border-color: transparent transparent var(--text-color) transparent;
   cursor: pointer;
 }
 
@@ -125,7 +151,7 @@ body {
 .curr_accuracy, .curr_cpm,
 .curr_wpm {
   font-size: 2.75rem;
-  color: #AFCAE9;
+  color: var(--text-highlight);
 }
 
 /*--------------------------*/
@@ -148,7 +174,6 @@ body {
   margin: 15px;
   padding: 20px;
   border: 0px;
-  box-shadow: black 5px 8px 5px;
 }
 
 /*----------------*/
@@ -156,16 +181,16 @@ body {
 /*----------------*/
 
   .incorrect_char {
-  color: #b63530;
+  color: var(--text-wrong);
   text-decoration: underline;
 }
   
 .correct_char {
-  color: #FEDFCA;
+  color: var(--text-correct);
 }
 
 .curr_char {
-  border-right: .15em solid #b63530;
+  border-right: .15em solid var(--cursor-col);
 }
 
 /*----------------*/
@@ -174,24 +199,24 @@ body {
 
 .restart_btn{
   display:inline-block;
-  padding:0.35em 1.2em;
-  border:0.1em solid #FFC524;
+  padding:0.25em 2em;
+  border:0.1em solid var(--text-color);
   margin:0 0.3em 0.3em 0;
   border-radius:0.12em;
   box-sizing: border-box;
   text-decoration:none;
   font-size: 1.5rem;
   font-weight:300;
-  color:#AFCAE9;
+  color:var(--text-highlight);
   background-color: transparent;
   text-align:center;
   transition: all 0.2s;
   
 }
 
-.restart_btn:hover, .restart_selected{
-  color:#000000;
-  background-color:#FFFFFF;
+.restart_btn:hover, .restart_selected {
+  color:var(--bg-color);
+  background-color:var(--text-highlight);
 }
 
  @media all and (max-width:30em){
@@ -215,11 +240,11 @@ body {
 
 .mode_group > div:hover {
   cursor: pointer;
-  color: #FEDFCA;
+  color: var(--text-correct);
 }
 
 .mode_selected {
-  color: #AFCAE9;
+  color: var(--text-highlight);
 }
 
 .subgroup {
@@ -232,7 +257,7 @@ body {
 
 .subgroup > div:hover {
   cursor: pointer;
-  color: #FEDFCA;
+  color: var(--text-correct);
 }
 
 .hidden {
