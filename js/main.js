@@ -63,7 +63,7 @@ window.addEventListener("load", InitGame, true);
 // UTILITY FUNCTIONS
 //--------------------
 
-language_select.addEventListener('change', function () {
+document.querySelector(".selection_menu").addEventListener('click', function () {
   language = language_select.options[language_select.selectedIndex].value;
   restartGame();
 });
@@ -445,11 +445,14 @@ for (i = 0; i < l; i++) {
   /* For each element, create a new DIV that will contain the option list: */
   b = document.createElement("DIV");
   b.setAttribute("class", "select-items select-hide");
-  for (j = 1; j < ll; j++) {
+  for (j = 0; j < ll; j++) {
     /* For each option in the original select element,
     create a new DIV that will act as an option item: */
     c = document.createElement("DIV");
     c.innerHTML = selElmnt.options[j].innerHTML;
+    if (j === 0) {
+      c.setAttribute("class","same-as-selected");
+    };
     c.addEventListener("click", function(e) {
         /* When an item is clicked, update the original select box,
         and the selected item: */
