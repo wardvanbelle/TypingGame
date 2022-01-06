@@ -226,7 +226,7 @@ function processCurrentText() {
           } else {
             updateWords(wordsLeft);
           }; 
-        } else {
+        } else if (CURR_MODE === "time") {
           updateWords(NUM_WORDS);
         };
         
