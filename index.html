@@ -8,8 +8,34 @@
 <body>
   <div class="container">
     <div class="heading">
-      <div class="keyTips">
-        <span class="key">tab</span> followed by <span class="key">enter</span> - restart test
+      <div>
+        <div class="mode_group">
+          <div class="mode mode_selected">
+            time
+          </div>
+          <div class="mode">
+            quote
+          </div>
+          <div class="mode">
+            words
+          </div>
+        </div>
+        <div class="mode_subgroups">
+          <div class="subgroup mode_time">
+            <div class="submode">15</div>
+            <div class="submode">30</div>
+            <div class="submode mode_selected">60</div>
+            <div class="submode">120</div>
+          </div>
+          <div class="subgroup mode_quote hidden">
+          </div>
+          <div class="subgroup mode_words hidden">
+            <div class="submode">10</div>
+            <div class="submode mode_selected">25</div>
+            <div class="submode">50</div>
+            <div class="submode">100</div>
+          </div>
+        </div>
       </div>
       <div class="Title">
         Simple Speed Typing
@@ -54,32 +80,8 @@
       onclick="restartGame()">
       &#8634;
     </button>
-    <div class="mode_group">
-      <div class="mode mode_selected">
-        time
-      </div>
-      <div class="mode">
-        quote
-      </div>
-      <div class="mode">
-        words
-      </div>
-    </div>
-    <div class="mode_subgroups">
-      <div class="subgroup mode_time">
-        <div class="submode">15</div>
-        <div class="submode">30</div>
-        <div class="submode mode_selected">60</div>
-        <div class="submode">120</div>
-      </div>
-      <div class="subgroup mode_quote hidden">
-      </div>
-      <div class="subgroup mode_words hidden">
-        <div class="submode">10</div>
-        <div class="submode mode_selected">25</div>
-        <div class="submode">50</div>
-        <div class="submode">100</div>
-      </div>
+    <div class="keyTips">
+      <span class="key">tab</span> followed by <span class="key">enter</span> - restart test
     </div>
   </div>
  
