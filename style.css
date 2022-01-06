@@ -1,139 +1,222 @@
+/*-------------------*/
+/* MAIN CSS ELEMENTS */
+/*-------------------*/
+
 body {
     background-color: #025E5E;
     color: #FFC524;
     text-align: center;
     font-family: Monaco, monospace;
     font: Comfortaa, "Roboto Mono";
-  }
-   
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-   
-  .heading {
-    margin-bottom: 20px;
-    font-size: 3rem;
-    width: 100%;
-    text-align: right;
-  }
+}
+  
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .Title {
-    float: left;
-    width: 69%;
-  }
+/*-------------------*/
+/*       TITLE       */
+/*-------------------*/
 
-  .selection_menu {
-    margin-left: 69%;
-    width: 30%;
-  }
+.heading {
+  margin-bottom: 20px;
+  font-size: 3rem;
+  width: 100%;
+  text-align: right;
+}
 
-  .selection_menu > option {
-    background-color: #025E5E;
-  }
-   
-  .header {
-    display: flex;
-    align-items: center;
-  }
-   
-  .timer, .errors, .accuracy,
-  .cpm, .wpm {
-    height: 60px;
-    width: 70px;
-    margin: 8px;
-    padding: 12px;
-  }
-   
-  .cpm, .wpm  {
-    display: none;
-  }
-   
-  .header_text {
-    font-size: 2rem;
-  }
-   
-  .curr_time, .curr_errors,
-  .curr_accuracy, .curr_cpm,
-  .curr_wpm {
-    font-size: 2.75rem;
-    color: #b63530;
-  }
-   
-  .text_screen {
-    font-size: 1.5rem;
-    margin: 10px;
-    padding: 25px;
-  }
-   
-  .input_area {
-    opacity: 0;
-    background-color: #f5f5c6;
-    height: 80px;
-    width: 40%;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 15px;
-    padding: 20px;
-    border: 0px;
-    box-shadow: black 5px 8px 5px;
-  }
-   
-  .restart_btn {
-    background-color: #326765;
-    font-size: 1.5rem;
-    padding: 10px;
-    border: 0px;
-  }
+.Title {
+  float: left;
+  width: 69%;
+}
 
-  .restart_selected {
-    box-shadow: #f7f2ea 5px 8px 5px;
-  }
-   
+/*--------------------*/
+/* LANGUAGE SELECTION */
+/*--------------------*/
+
+.selection_menu {
+  margin-left: 90%;
+  position: relative;
+  width: 10%;
+}
+
+.selection_menu select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  font-size: 1.5rem;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 10px;
+  right: 5px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #AFCAE9 transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #AFCAE9 transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #AFCAE9;
+  font-size: 1.5rem;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent #FFC524 transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/*---------------------------------*/
+/* MEASUREMENT PANEL (WPM,CPM,...) */
+/*---------------------------------*/
+  
+.header {
+  display: flex;
+  align-items: center;
+}
+  
+.timer, .errors, .accuracy,
+.cpm, .wpm {
+  height: 60px;
+  width: 70px;
+  margin: 8px;
+  padding: 12px;
+}
+  
+.cpm, .wpm  {
+  display: none;
+}
+  
+.header_text {
+  font-size: 2rem;
+}
+  
+.curr_time, .curr_errors,
+.curr_accuracy, .curr_cpm,
+.curr_wpm {
+  font-size: 2.75rem;
+  color: #AFCAE9;
+}
+
+/*--------------------------*/
+/* TEXT SCREEN + INPUT AREA */
+/*--------------------------*/ 
+
+.text_screen {
+  font-size: 1.5rem;
+  margin: 10px;
+  padding: 25px;
+}
+
+.input_area {
+  opacity: 0;
+  background-color: #f5f5c6;
+  height: 80px;
+  width: 40%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 15px;
+  padding: 20px;
+  border: 0px;
+  box-shadow: black 5px 8px 5px;
+}
+
+/*----------------*/
+/* CHARACTER DIVS */
+/*----------------*/
+
   .incorrect_char {
-    color: #b63530;
-    text-decoration: underline;
-  }
-   
-  .correct_char {
-    color: #FEDFCA;
-  }
+  color: #b63530;
+  text-decoration: underline;
+}
+  
+.correct_char {
+  color: #FEDFCA;
+}
 
-  .curr_char {
-    border-right: .15em solid #b63530;
-  }
+.curr_char {
+  border-right: .15em solid #b63530;
+}
 
-  .mode_group {
-    padding: 5px;
-  }
+/*----------------*/
+/* RESTART BUTTON */
+/*----------------*/
+  
+.restart_btn {
+  background-color: #326765;
+  font-size: 1.5rem;
+  padding: 10px;
+  border: 0px;
+}
 
-  .mode_group > div {
-    display: inline-block;
-  }
+.restart_selected {
+  box-shadow: #f7f2ea 5px 8px 5px;
+}
 
-  .mode_group > div:hover {
-    cursor: pointer;
-    color: #FEDFCA;
-  }
+/*---------------------*/
+/* MODE SELECTION MENU */
+/*---------------------*/
 
-  .mode_selected {
-    color: #b63530;
-  }
+.mode_group {
+  padding: 5px;
+}
 
-  .subgroup {
-    padding: 2px;
-  }
+.mode_group > div {
+  display: inline-block;
+}
 
-  .subgroup > div {
-    display: inline-block;
-  }
+.mode_group > div:hover {
+  cursor: pointer;
+  color: #FEDFCA;
+}
 
-  .subgroup > div:hover {
-    cursor: pointer;
-    color: #FEDFCA;
-  }
+.mode_selected {
+  color: #AFCAE9;
+}
 
-  .hidden {
-    display: none;
-  }
+.subgroup {
+  padding: 2px;
+}
+
+.subgroup > div {
+  display: inline-block;
+}
+
+.subgroup > div:hover {
+  cursor: pointer;
+  color: #FEDFCA;
+}
+
+.hidden {
+  display: none;
+}
